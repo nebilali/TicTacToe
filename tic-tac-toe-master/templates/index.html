@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic-Tac-Toe</title>
+	<script src="assets/js/jquery-1.11.3.js"></script>
+  	<link rel="stylesheet" type="text/css" href="assets/style/tic-tac-toe.css">
+
+</head>
+
+<body>
+	<div class="table">
+		<table>
+			<tr>
+				<td>
+					<!---Note to self... DON'T USE TABLES!!!!---->
+					<button id="0" class="cell cell0" onclick="displayImage(this.id)">
+						<span></span>
+						<div class="images">
+							<img id="pic" src="assets/images/hilary.jpg" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>
+					</button>
+				</td>
+				<td>
+					
+					<button id="1" class= "cell cell1">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+				<td>
+					
+					<button id="2" class="cell cell2">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					
+					<button id="3" class="cell cell3">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+				<td>
+					
+					<button id="4" class="cell cell4">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+				<td>
+					
+					<button id="5" class="cell cell5">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					
+					<button id="6" class= "cell cell6">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+				<td>
+					
+					<button id="7" class="cell cell7">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+				<td>
+					<button id="8" class="cell cell8">
+						<span></span>
+						<div class="images">
+							<img src="assets/images/char-dobble-mario.png" class="X">
+							<img src="assets/images/Bowser_-_New_Super_Mario_Bros_2.png" class="O">
+						</div>	
+					</button>
+				</td>
+			</tr>
+		</table>
+
+		<submit id="new" class="new_game">New Game</submit>
+	</div>
+
+
+	<div class="moveBlock">
+		<div class="playAgain">
+			<h1></h1>
+			<p id="content">would you like to play again?</p>
+			<button class="yes">Yes</button>
+			<button class="no">No</button>
+		</div>
+	</div>
+
+	<script>
+
+
+
+
+
+
+
+	$(function() {
+		window.alert('here')
+	    $('button').bind('click', function() {
+	      $.getJSON('/_getmove', {
+	        a: $(this).attr('id'),
+	        b: 2
+	      }, function(data) {
+	      	// $(#data.buttonId).hide();
+
+	      	if (data.isWin != 3){
+	      		window.alert(data.isWin);
+	      		if(data.isWin == 0){
+	      			window.alert('Draw!');
+	      		}else if(data.isWin == 1){
+	      			window.alert("Player 1 is the winner!");
+	      		}else{
+	      			window.alert("It is Draw :(")
+	      		}
+	      	}
+
+	      	var playerButtonId = data.playerButton;
+	      	var compButtonId = data.compButton;
+	      	$("#"+compButtonId+" .X").show();
+	      	$("#"+playerButtonId+" .O").show();
+
+	      	window.alert(playerButtonId);
+	      	window.alert(compButtonId);
+
+	        // $(".X").hide();
+	      });
+	      return false;
+	    });
+	  });	
+	</script>
+	
+
+
+
+	<audio src="assets/audio/smw_coin.wav" id="marioStart" preload="auto"></audio>
+	<audio src="assets/audio/210-game-over.mp3" id="lose" preload="auto"></audio>
+	<audio src="assets/audio/206-course-clear-fanfare.mp3" id="winner" preload="auto"></audio>
+	<audio src="assets/audio/Mario-jump-sound.mp3" id="mario" preload="auto"></audio>
+	<audio src="assets/audio/Bowser_Fire_Sound_Effect.mp3" id="bowser" preload="auto"></audio>
+	<audio src="assets/audio/smb_pipe.wav" id="noWin" preload="auto"></audio>
+	<script src="assets/js/tic-tac-toe.js"></script>
+	<script src="assets/js/jquery-1.11.3.js"></script>
+
+	
+</body>
+</html>
